@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.homePages;
+import pages.registerPages;
 
 import java.time.Duration;
 import java.util.Random;
@@ -29,7 +31,9 @@ public class MyStepdefs extends env_target {
 
     @When("User click register")
     public void userClickRegister() {
-        driver.findElement(By.xpath("//*[@id=\"loginPanel\"]/p[2]/a")).click();
+//        driver.findElement(By.xpath("//*[@id=\"loginPanel\"]/p[2]/a")).click();
+        homePages homepages = new homePages(driver);
+        homepages.clickRegister();
     }
 
     @Then("User is on Register Page")
@@ -43,14 +47,16 @@ public class MyStepdefs extends env_target {
 
     @When("User fill data")
     public void userFillData() {
-        driver.findElement(By.id("customer.firstName")).sendKeys("Ester");
-        driver.findElement(By.id("customer.lastName")).sendKeys("Berutu");
-        driver.findElement(By.id("customer.address.street")).sendKeys("Sei Mencirim");
-        driver.findElement(By.id("customer.address.city")).sendKeys("Medan");
-        driver.findElement(By.id("customer.address.state")).sendKeys("Sumatera");
-        driver.findElement(By.id("customer.address.zipCode")).sendKeys("20121");
-        driver.findElement(By.id("customer.phoneNumber")).sendKeys("08123456789");
-        driver.findElement(By.id("customer.ssn")).sendKeys("12345678");
+//        driver.findElement(By.id("customer.firstName")).sendKeys("Ester");
+//        driver.findElement(By.id("customer.lastName")).sendKeys("Berutu");
+//        driver.findElement(By.id("customer.address.street")).sendKeys("Sei Mencirim");
+//        driver.findElement(By.id("customer.address.city")).sendKeys("Medan");
+//        driver.findElement(By.id("customer.address.state")).sendKeys("Sumatera");
+//        driver.findElement(By.id("customer.address.zipCode")).sendKeys("20121");
+//        driver.findElement(By.id("customer.phoneNumber")).sendKeys("08123456789");
+//        driver.findElement(By.id("customer.ssn")).sendKeys("12345678");
+        registerPages registerpage = new registerPages(driver);
+        registerpage.inputData("Ester", "Berutu", "Sei Mencirim", "Medan", "Sumatera", "20121", "08120987654", "123456");
     }
 
     @And("User fill valid username and password")
